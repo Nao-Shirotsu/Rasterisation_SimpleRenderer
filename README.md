@@ -35,43 +35,45 @@ Before build
 
 ```
 Rasterisation_SimpleRenderer/
-	├─Rasterizer.sln
-	├─Rasterizer.vcxproj
-	├─Rasterizer.vcxproj.filters
-	├─Rasterizer.vcxproj.user
-    ├─CMakeLists.txt
-    ├─README.md
-	├─LICENSE
-	├─test 
-	│	└─src/
-    │	   └─GTEST_SOURCE_FILES
-	└─src
-	   └─RASTERIZER_SOURCE_FILES
+  ├─Rasterizer.sln
+  ├─Rasterizer.vcxproj
+  ├─Rasterizer.vcxproj.filters
+  ├─Rasterizer.vcxproj.user
+  ├─CMakeLists.txt
+  ├─README.md
+  ├─LICENSE
+  ├─test 
+  │  └─src/
+  │     └─GTEST_SOURCE_FILES
+  └─src
+     └─RASTERIZER_SOURCE_FILES
 ```
 
 After Build
 
 ```
 Rasterisation_SimpleRenderer/
-	├─Rasterizer.sln
-	├─Rasterizer.vcxproj
-	├─Rasterizer.vcxproj.filters
-	├─Rasterizer.vcxproj.user
-    ├─CMakeLists.txt
-    ├─README.md
-	├─LICENSE
-    ├─test/ 
-	│	├─src/
-    │	│  └─GTEST_SOURCE_FILES
-    │	├─bin/
-    │	│  └─test_run
-	│	└─build/
-	│	   └─MAKEFILES
-	├─src/
-	│  └─RASTERIZER_SOURCE_FILES
-    ├─bin/
-    │  └─test_run
-	└─build/
-	   └─MAKEFILES
+  ├─Rasterizer.sln
+  ├─Rasterizer.vcxproj
+  ├─Rasterizer.vcxproj.filters
+  ├─Rasterizer.vcxproj.user
+  ├─CMakeLists.txt
+  ├─README.md
+  ├─LICENSE
+  ├─test/ 
+  │  ├─src/
+  │  │  └─GTEST_SOURCE_FILES
+  │  ├─bin/
+  │  │  └─test_run
+  │  └─build/
+  │     └─MAKEFILES
+  ├─src/
+  │  └─RASTERIZER_SOURCE_FILES
+  ├─bin/
+  │  └─test_run
+  ├─build/
+  │  └─MAKEFILES
+  └─libs/
+     └─STATIC_LIBRARY_FILE
 ```
 
