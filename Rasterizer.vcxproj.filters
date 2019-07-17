@@ -4,13 +4,24 @@
     <Filter Include="src">
       <UniqueIdentifier>{b3a4f0f0-a3bf-40af-b156-c5d673fa6f7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test/src">
+      <UniqueIdentifier>{78afa03f-fd4e-4230-9f67-00a7c108be12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="test\src\TestVector3.cpp">
+      <Filter>test/src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Vector3.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

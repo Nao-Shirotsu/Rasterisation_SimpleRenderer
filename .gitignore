@@ -335,3 +335,6 @@ libs/
 bin/
 test/build/
 test/bin
+
+# vs test project files
+RasterisationTest/

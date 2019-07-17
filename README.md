@@ -4,6 +4,8 @@ Rasterisation-based image generator
 
 ## Build
 
+cmake and make generate directories including static library and execution files.
+
 #### for rendering exec file:
 
 ```
@@ -44,9 +46,9 @@ Rasterisation_SimpleRenderer/
   ├─LICENSE
   ├─test 
   │  └─src/
-  │     └─GTEST_SOURCE_FILES
+  │     └─gtest .cpp source files
   └─src
-     └─RASTERIZER_SOURCE_FILES
+     └─rasterizer .cpp/.hpp source files
 ```
 
 After Build
@@ -62,18 +64,18 @@ Rasterisation_SimpleRenderer/
   ├─LICENSE
   ├─test/ 
   │  ├─src/
-  │  │  └─GTEST_SOURCE_FILES
+  │  │  └─gtest .cpp files
   │  ├─bin/
   │  │  └─test_run
   │  └─build/
-  │     └─MAKEFILES
+  │     └─make files
   ├─src/
-  │  └─RASTERIZER_SOURCE_FILES
+  │  └─rasterizer .cpp/.hpp source files
   ├─bin/
   │  └─test_run
   ├─build/
-  │  └─MAKEFILES
+  │  └─make files
   └─libs/
-     └─STATIC_LIBRARY_FILE
+     └─static library files
 ```
 
