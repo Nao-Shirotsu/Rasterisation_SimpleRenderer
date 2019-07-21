@@ -20,12 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="test\src\TestVector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Matrix.hpp" />
     <ClInclude Include="src\Vector3.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test/src">
+      <UniqueIdentifier>{7faa55cf-7481-4257-9979-cfd99845deaa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\test\src\TestVector3.cpp">
+      <Filter>test/src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\src\TestMatrix.cpp">
+      <Filter>test/src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

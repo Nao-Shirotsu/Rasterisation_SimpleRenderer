@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rasterizer", "Rasterizer.vcxproj", "{A6059C0D-DD87-445F-A841-29165AB988C5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RasterisationTest", "RastarisationTest\RastarisationTest.vcxproj", "{00CFCAC8-200E-47A9-9516-B6F3F1F0B0DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RasterisationTest", "RasterisationTest\RastarisationTest.vcxproj", "{00CFCAC8-200E-47A9-9516-B6F3F1F0B0DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
