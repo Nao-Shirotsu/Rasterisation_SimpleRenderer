@@ -1,5 +1,5 @@
 #include "../../src/Matrix.hpp"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 void ASSERT_EQ_MATRIX (const ras::Matrix4& expected, const ras::Matrix4& actual){
   for (int i = 0; i < 4; ++i) {
@@ -9,7 +9,7 @@ void ASSERT_EQ_MATRIX (const ras::Matrix4& expected, const ras::Matrix4& actual)
   }
 }
 
-TEST(Matrix4, operators) {
+TEST(Matrix4, Product) {
   constexpr ras::Matrix4 mat1 = {
     0, 1, 2, 3,
     4, 5, 6, 7,
@@ -32,4 +32,21 @@ TEST(Matrix4, operators) {
   };
 
   ASSERT_EQ_MATRIX(expected, mat1 * mat2);
+}
+
+TEST(Matrix4, ProductWithVector3) {
+  constexpr auto vec = ras::Vector3( -1.5, 2.75, 0 );
+  constexpr auto trans = ras::Matrix4{
+    -2, -3, -4, -2.5,
+    0, 0, 0, 0,
+    0.5, 0.5, 0.25, 0.75,
+    0, 0, 0, 0
+  };
+
+  constexpr auto expected = ras::Vector3{ 3, 4.5, 6};
+  constexpr ras::Vector3 actual = vec * trans;
+
+  ASSERT_DOUBLE_EQ(expected.x, actual.x);
+  ASSERT_DOUBLE_EQ(expected.y, actual.y);
+  ASSERT_DOUBLE_EQ(expected.z, actual.z);
 }
