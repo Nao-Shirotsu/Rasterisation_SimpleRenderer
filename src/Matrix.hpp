@@ -11,7 +11,7 @@ using Matrix4 = std::array<std::array<double, 4>, 4>;
 } // namespace ras
 
 // Vector3‚ğ4ŸŒ³‚ÉŠg’£‚µ‚Ä4x4s—ñ‚Æ‚ÌÏ‚ğæ‚é
-constexpr ras::Vector3 operator*(const ras::Vector3& vec, const ras::Matrix4& matrix) {
+[[nodiscard]] constexpr ras::Vector3 operator*(const ras::Vector3& vec, const ras::Matrix4& matrix) {
   ras::Vector3 result;
   result.x = vec.x * matrix[0][0] + vec.y * matrix[1][0] + vec.z * matrix[2][0] + matrix[3][0];
   result.y = vec.x * matrix[0][1] + vec.y * matrix[1][1] + vec.z * matrix[2][1] + matrix[3][1];
@@ -19,7 +19,7 @@ constexpr ras::Vector3 operator*(const ras::Vector3& vec, const ras::Matrix4& ma
   return result;
 }
 
-constexpr ras::Matrix4 operator*(const ras::Matrix4& lhs, const ras::Matrix4& rhs) {
+[[nodiscard]] constexpr ras::Matrix4 operator*(const ras::Matrix4& lhs, const ras::Matrix4& rhs) {
   ras::Matrix4 result = {
     0, 0, 0, 0,
     0, 0, 0, 0,
