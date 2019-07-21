@@ -34,32 +34,32 @@ public:
   }
 
   // ベクトル同士の加算
-  constexpr Vector3 operator+(const Vector3& rhs) const {
+  [[nodiscard]] constexpr Vector3 operator+(const Vector3& rhs) const {
     return Vector3(x + rhs.x, y + rhs.y, z + rhs.z);
   }
 
   // ベクトル同士の減算
-  constexpr Vector3 operator-(const Vector3& rhs) const {
+  [[nodiscard]] constexpr Vector3 operator-(const Vector3& rhs) const {
     return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
   }
 
 
   // スカラー乗除算 (v/2 のように右側にスカラー)
-  constexpr Vector3 operator/(const double num) const {
+  [[nodiscard]] constexpr Vector3 operator/(const double num) const {
     return Vector3(x / num, y / num, z / num);
   }
 
-  constexpr Vector3 operator*(const double num) const {
+  [[nodiscard]] constexpr Vector3 operator*(const double num) const {
     return Vector3(x * num, y * num, z * num);
   }
 
   // 大きさを求める
-  constexpr double Norm() const {
+  [[nodiscard]] constexpr double Norm() const {
     return std::sqrt(x * x + y * y + z * z);
   }
 
   // 正規化
-  constexpr Vector3 NormalizedVector() const {
+  [[nodiscard]] constexpr Vector3 NormalizedVector() const {
     double norm = Norm();
     return Vector3(x / norm, y / norm, z / norm);
   }
@@ -68,22 +68,22 @@ public:
 };
 
 // スカラー乗算 (2v のように左側にスカラー)
-constexpr Vector3 operator*(const double num, const Vector3& rhs) {
+[[nodiscard]] constexpr Vector3 operator*(const double num, const Vector3& rhs) {
   return Vector3(rhs.x * num, rhs.y * num, rhs.z * num);
 }
 
 // ベクトル同士の要素ごとの積
-constexpr Vector3 Multiply(const Vector3& lhs, const Vector3& rhs) {
+[[nodiscard]] constexpr Vector3 Multiply(const Vector3& lhs, const Vector3& rhs) {
   return Vector3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
 }
 
 // ベクトルの内積
-constexpr double Dot(const Vector3& lhs, const Vector3& rhs) {
+[[nodiscard]] constexpr double Dot(const Vector3& lhs, const Vector3& rhs) {
   return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
 // ベクトルの外積
-constexpr Vector3 Cross(const Vector3& lhs, const Vector3& rhs) {
+[[nodiscard]] constexpr Vector3 Cross(const Vector3& lhs, const Vector3& rhs) {
   return Vector3(lhs.y * rhs.z - lhs.z * rhs.y,
                  lhs.z * rhs.x - lhs.x * rhs.z,
                  lhs.x * rhs.y - lhs.y * rhs.x);
