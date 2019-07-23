@@ -44,6 +44,7 @@
   <ItemGroup>
     <ClCompile Include="..\test\src\TestMatrix.cpp" />
     <ClCompile Include="..\test\src\TestVector3.cpp" />
+    <ClCompile Include="src\TestPolygon.cpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
