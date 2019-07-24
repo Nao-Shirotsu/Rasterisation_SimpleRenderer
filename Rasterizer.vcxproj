@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Matrix.hpp" />
+    <ClInclude Include="src\Polygon.hpp" />
     <ClInclude Include="src\Vector3.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

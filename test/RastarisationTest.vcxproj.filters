@@ -15,5 +15,8 @@
     <ClCompile Include="..\test\src\TestMatrix.cpp">
       <Filter>test/src</Filter>
     </ClCompile>
+    <ClCompile Include="src\TestPolygon.cpp">
+      <Filter>test/src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

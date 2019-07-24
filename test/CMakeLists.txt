@@ -8,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 add_executable(test_run
     ${CMAKE_CURRENT_SOURCE_DIR}/src/TestVector3.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/TestMatrix.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TestPolygon.cpp
 )
 target_link_libraries(test_run
     PRIVATE

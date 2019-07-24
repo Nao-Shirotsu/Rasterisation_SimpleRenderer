@@ -7,12 +7,12 @@ namespace ras {
 // ベクトル同士の加減算,要素ごとの積,スカラーを乗除算,内積,外積,大きさの計算,正規化ができる
 class Vector3 {
 public:
-  constexpr explicit Vector3()
+  constexpr Vector3()
     : x(0)
     , y(0)
     , z(0) {}
 
-  constexpr explicit Vector3(const double x_, const double y_, const double z_)
+  constexpr Vector3(const double x_, const double y_, const double z_)
     : x(x_)
     , y(y_)
     , z(z_) {}
