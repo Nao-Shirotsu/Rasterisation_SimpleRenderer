@@ -3,14 +3,14 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace {
+namespace ras {
+
+namespace literals{
 
 constexpr uint8_t U8_0 = static_cast<uint8_t>(0);
 constexpr uint8_t U8_255 = static_cast<uint8_t>(255);
 
-} // anonymous namespace
-
-namespace ras {
+} // namespace literals
 
 class ColorRGBfloat;
 
@@ -23,25 +23,25 @@ public:
     , blue{ 0 } {}
 
   constexpr ColorRGB255(uint8_t red_, uint8_t green_, uint8_t blue_)
-    : red{ std::clamp( red_, U8_0, U8_255) }
-    , green{ std::clamp( green_, U8_0, U8_255) }
-    , blue{ std::clamp( blue_, U8_0, U8_255) } {}
+    : red{ std::clamp( red_, literals::U8_0, literals::U8_255) }
+    , green{ std::clamp( green_, literals::U8_0, literals::U8_255) }
+    , blue{ std::clamp( blue_, literals::U8_0, literals::U8_255) } {}
 
   constexpr ColorRGB255(const ColorRGB255& other)
-    : red{ std::clamp(other.R(), U8_0, U8_255) }
-    , green{ std::clamp(other.G(), U8_0, U8_255) }
-    , blue{ std::clamp(other.B(), U8_0, U8_255) } {}
+    : red{ std::clamp(other.R(), literals::U8_0, literals::U8_255) }
+    , green{ std::clamp(other.G(), literals::U8_0, literals::U8_255) }
+    , blue{ std::clamp(other.B(), literals::U8_0, literals::U8_255) } {}
 
   constexpr ColorRGB255(const ColorRGBfloat& other)
-    : red{ std::clamp(static_cast<uint8_t>(other.R() * 255), U8_0, U8_255) }
-    , green{ std::clamp(static_cast<uint8_t>(other.G() * 255), U8_0, U8_255) }
-    , blue{ std::clamp(static_cast<uint8_t>(other.B() * 255), U8_0, U8_255) } {}
+    : red{ std::clamp(static_cast<uint8_t>(other.R() * 255), literals::U8_0, literals::U8_255) }
+    , green{ std::clamp(static_cast<uint8_t>(other.G() * 255), literals::U8_0, literals::U8_255) }
+    , blue{ std::clamp(static_cast<uint8_t>(other.B() * 255), literals::U8_0, literals::U8_255) } {}
 
   constexpr ColorRGB255& operator=(const ColorRGB255& other){
     using std::clamp;
-    red = clamp(other.R(), U8_0, U8_255);
-    green = clamp(other.G(), U8_0, U8_255);
-    blue = clamp(other.B(), U8_0, U8_255);
+    red = clamp(other.R(), literals::U8_0, literals::U8_255);
+    green = clamp(other.G(), literals::U8_0, literals::U8_255);
+    blue = clamp(other.B(), literals::U8_0, literals::U8_255);
     return *this;
   }
 
@@ -74,15 +74,15 @@ public:
   }
 
   constexpr void SetR (const uint8_t red_){
-    red = std::clamp(red_, U8_0, U8_255);
+    red = std::clamp(red_, literals::U8_0, literals::U8_255);
   }
 
   constexpr void SetG(const uint8_t green_) {
-    green = std::clamp(green_, U8_0, U8_255);
+    green = std::clamp(green_, literals::U8_0, literals::U8_255);
   }
 
   constexpr void SetB(const uint8_t blue_) {
-    blue = std::clamp(blue_, U8_0, U8_255);
+    blue = std::clamp(blue_, literals::U8_0, literals::U8_255);
   }
 
   [[nodiscard]] constexpr ColorRGBfloat ToColorRGBfloat () const{

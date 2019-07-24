@@ -23,5 +23,8 @@
     <ClInclude Include="src\Polygon.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ColorRGB.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
