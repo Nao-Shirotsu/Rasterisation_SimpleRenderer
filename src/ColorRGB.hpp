@@ -45,12 +45,12 @@ public:
     return ColorRGB255{ red - other.R(), green - other.G(), blue - other.B() };
   }
 
-  [[nodiscard]] constexpr ColorRGB255 operator*(const int32_t factor) const{
-    return ColorRGB255{red * factor, green * factor, blue * factor};
+  [[nodiscard]] constexpr ColorRGB255 operator*(const double factor) const{
+    return ColorRGB255{static_cast<int32_t>(red * factor), static_cast<int32_t>(green * factor), static_cast<int32_t>(blue * factor)};
   }
 
-  [[nodiscard]] constexpr ColorRGB255 operator/(const int32_t factor) const{
-    return ColorRGB255{red / factor, green / factor, blue / factor};
+  [[nodiscard]] constexpr ColorRGB255 operator/(const double factor) const{
+    return ColorRGB255{ static_cast<int32_t>(red / factor), static_cast<int32_t>(green / factor), static_cast<int32_t>(blue / factor) };
   }
 
   [[nodiscard]] constexpr int32_t R() const{
@@ -81,9 +81,9 @@ private:
   int32_t red, green, blue;
 };
 
-[[nodiscard]] constexpr ColorRGB255 operator*(const int32_t factor, ColorRGB255& color) {
+[[nodiscard]] constexpr ColorRGB255 operator*(const double factor, const ColorRGB255& color) {
   using std::clamp;
-  return ColorRGB255{ color.R() * factor, color.G() * factor, color.B() * factor};
+  return ColorRGB255{ static_cast<int32_t>(color.R() * factor), static_cast<int32_t>(color.G() * factor), static_cast<int32_t>(color.B() * factor) };
 }
 
 } //namespace ras
