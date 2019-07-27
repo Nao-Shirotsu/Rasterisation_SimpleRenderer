@@ -25,6 +25,7 @@
     <None Include=".clang-format" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ColorRGB.hpp" />
     <ClInclude Include="src\Matrix.hpp" />
     <ClInclude Include="src\Polygon.hpp" />
     <ClInclude Include="src\Vector3.hpp" />

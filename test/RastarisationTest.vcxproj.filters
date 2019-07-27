@@ -18,5 +18,8 @@
     <ClCompile Include="src\TestPolygon.cpp">
       <Filter>test/src</Filter>
     </ClCompile>
+    <ClCompile Include="src\TestColorRGB.cpp">
+      <Filter>test/src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
