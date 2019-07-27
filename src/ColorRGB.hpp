@@ -7,8 +7,11 @@ namespace ras {
 
 namespace literals{
 
-constexpr uint8_t U8_0 = static_cast<uint8_t>(0);
-constexpr uint8_t U8_255 = static_cast<uint8_t>(255);
+constexpr int32_t COLOR_MIN = static_cast<int32_t>(0);
+constexpr int32_t COLOR_MAX = static_cast<int32_t>(255);
+constexpr double COLORF_MIN = 0.0;
+constexpr double COLORF_MAX = 1.0;
+
 
 } // namespace literals
 
@@ -18,30 +21,29 @@ class ColorRGBfloat;
 class ColorRGB255 {
 public:
   constexpr ColorRGB255()
-    : red{ 0 }
-    , green{ 0 }
-    , blue{ 0 } {}
+    : red{ literals::COLOR_MIN }
+    , green{ literals::COLOR_MIN }
+    , blue{ literals::COLOR_MIN } {}
 
-  constexpr ColorRGB255(uint8_t red_, uint8_t green_, uint8_t blue_)
-    : red{ std::clamp( red_, literals::U8_0, literals::U8_255) }
-    , green{ std::clamp( green_, literals::U8_0, literals::U8_255) }
-    , blue{ std::clamp( blue_, literals::U8_0, literals::U8_255) } {}
+  constexpr ColorRGB255(int32_t red_, int32_t green_, int32_t blue_)
+    : red{ std::clamp( red_, literals::COLOR_MIN, literals::COLOR_MAX) }
+    , green{ std::clamp( green_, literals::COLOR_MIN, literals::COLOR_MAX) }
+    , blue{ std::clamp( blue_, literals::COLOR_MIN, literals::COLOR_MAX) } {}
 
   constexpr ColorRGB255(const ColorRGB255& other)
-    : red{ std::clamp(other.R(), literals::U8_0, literals::U8_255) }
-    , green{ std::clamp(other.G(), literals::U8_0, literals::U8_255) }
-    , blue{ std::clamp(other.B(), literals::U8_0, literals::U8_255) } {}
+    : red{ other.R() }
+    , green{ other.G() }
+    , blue{ other.B() } {}
 
   constexpr ColorRGB255(const ColorRGBfloat& other)
-    : red{ std::clamp(static_cast<uint8_t>(other.R() * 255), literals::U8_0, literals::U8_255) }
-    , green{ std::clamp(static_cast<uint8_t>(other.G() * 255), literals::U8_0, literals::U8_255) }
-    , blue{ std::clamp(static_cast<uint8_t>(other.B() * 255), literals::U8_0, literals::U8_255) } {}
+    : red{ std::clamp(static_cast<int32_t>(other.R() * literals::COLOR_MAX), literals::COLOR_MIN, literals::COLOR_MAX) }
+    , green{ std::clamp(static_cast<int32_t>(other.G() * literals::COLOR_MAX), literals::COLOR_MIN, literals::COLOR_MAX) }
+    , blue{ std::clamp(static_cast<int32_t>(other.B() * literals::COLOR_MAX), literals::COLOR_MIN, literals::COLOR_MAX) } {}
 
   constexpr ColorRGB255& operator=(const ColorRGB255& other){
-    using std::clamp;
-    red = clamp(other.R(), literals::U8_0, literals::U8_255);
-    green = clamp(other.G(), literals::U8_0, literals::U8_255);
-    blue = clamp(other.B(), literals::U8_0, literals::U8_255);
+    red = other.R();
+    green = other.G();
+    blue = other.B();
     return *this;
   }
 
@@ -53,73 +55,75 @@ public:
     return ColorRGB255{ red - other.R(), green - other.G(), blue - other.B() };
   }
 
-  [[nodiscard]] constexpr ColorRGB255 operator*(const uint8_t factor) const{
+  [[nodiscard]] constexpr ColorRGB255 operator*(const int32_t factor) const{
     return ColorRGB255{red * factor, green * factor, blue * factor};
   }
 
-  [[nodiscard]] constexpr ColorRGB255 operator/(const uint8_t factor) const{
+  [[nodiscard]] constexpr ColorRGB255 operator/(const int32_t factor) const{
     return ColorRGB255{red / factor, green / factor, blue / factor};
   }
 
-  [[nodiscard]] constexpr uint8_t R() const{
+  [[nodiscard]] constexpr int32_t R() const{
     return red;
   }
 
-  [[nodiscard]] constexpr uint8_t G() const{
+  [[nodiscard]] constexpr int32_t G() const{
     return green;
   }
 
-  [[nodiscard]] constexpr uint8_t B() const{
+  [[nodiscard]] constexpr int32_t B() const{
     return blue;
   }
 
-  constexpr void SetR (const uint8_t red_){
-    red = std::clamp(red_, literals::U8_0, literals::U8_255);
+  constexpr void SetR (const int32_t red_){
+    red = std::clamp(red_, literals::COLOR_MIN, literals::COLOR_MAX);
   }
 
-  constexpr void SetG(const uint8_t green_) {
-    green = std::clamp(green_, literals::U8_0, literals::U8_255);
+  constexpr void SetG(const int32_t green_) {
+    green = std::clamp(green_, literals::COLOR_MIN, literals::COLOR_MAX);
   }
 
-  constexpr void SetB(const uint8_t blue_) {
-    blue = std::clamp(blue_, literals::U8_0, literals::U8_255);
+  constexpr void SetB(const int32_t blue_) {
+    blue = std::clamp(blue_, literals::COLOR_MIN, literals::COLOR_MAX);
   }
 
-  [[nodiscard]] constexpr ColorRGBfloat ToColorRGBfloat () const{
-    return ColorRGBfloat(red / 255.0, green / 255.0, blue/ 255.0);
-  }
+  /*[[nodiscard]] constexpr ColorRGBfloat ToColorRGBfloat () const{
+    return ColorRGBfloat(static_cast<double>(red) / literals::COLOR_MAX
+                         , static_cast<double>(green) / literals::COLOR_MAX
+                         , static_cast<double>(blue) / literals::COLOR_MAX);
+  }*/
 
 private:
-  uint8_t red, green, blue;
+  int32_t red, green, blue;
 };
 
-[[nodiscard]] constexpr ColorRGB255 operator*(const uint8_t factor, ColorRGB255& color) {
+[[nodiscard]] constexpr ColorRGB255 operator*(const int32_t factor, ColorRGB255& color) {
   using std::clamp;
-  return ColorRGB255{ clamp(color.R() * factor, 0, 255), clamp(color.G() * factor, 0, 255), clamp(color.B() * factor, 0, 255) };
+  return ColorRGB255{ color.R() * factor, color.G() * factor, color.B() * factor};
 }
 
 // 0.0~1.0で各色を表すRGBカラークラス
 class ColorRGBfloat {
 public:
   constexpr ColorRGBfloat()
-    : red{ 0 }
-    , green{ 0 }
-    , blue{ 0 } {}
+    : red{ literals::COLORF_MIN }
+    , green{ literals::COLORF_MIN }
+    , blue{ literals::COLORF_MIN } {}
 
   constexpr ColorRGBfloat(double red_, double green_, double blue_)
-    : red{ std::clamp(red_, 0.0, 1.0) }
-    , green{ std::clamp(green_, 0.0, 1.0) }
-    , blue{ std::clamp(blue_, 0.0, 1.0) } {}
+    : red{ std::clamp(red_, literals::COLORF_MIN, literals::COLORF_MAX) }
+    , green{ std::clamp(green_, literals::COLORF_MIN, literals::COLORF_MAX) }
+    , blue{ std::clamp(blue_, literals::COLORF_MIN, literals::COLORF_MAX) } {}
 
   constexpr ColorRGBfloat(const ColorRGBfloat& other)
-    : red{ std::clamp(other.R(), 0.0, 1.0) }
-    , green{ std::clamp(other.G(), 0.0, 1.0) }
-    , blue{ std::clamp(other.B(), 0.0, 1.0) } {}
+    : red{ std::clamp(other.R(), literals::COLORF_MIN, literals::COLORF_MAX) }
+    , green{ std::clamp(other.G(), literals::COLORF_MIN, literals::COLORF_MAX) }
+    , blue{ std::clamp(other.B(), literals::COLORF_MIN, literals::COLORF_MAX) } {}
 
   constexpr ColorRGBfloat(const ColorRGB255& other)
-    : red{ std::clamp(other.R() / 255.0, 0.0, 1.0) }
-    , green{ std::clamp(other.G() / 255.0, 0.0, 1.0) }
-    , blue{ std::clamp(other.B()/ 255.0, 0.0, 1.0)} {}
+    : red{ std::clamp(static_cast<decltype(red)>(other.R()) / literals::COLOR_MAX, literals::COLORF_MIN, literals::COLORF_MAX) }
+    , green{ std::clamp(static_cast<decltype(red)>(other.G()) / literals::COLOR_MAX, literals::COLORF_MIN, literals::COLORF_MAX) }
+    , blue{ std::clamp(static_cast<decltype(red)>(other.B()) / literals::COLOR_MAX, literals::COLORF_MIN, literals::COLORF_MAX)} {}
 
   constexpr ColorRGBfloat& operator=(const ColorRGBfloat& other) {
     red = other.R();
@@ -157,20 +161,20 @@ public:
   }
 
   constexpr void SetR(const double red_) {
-    red = std::clamp(red_, 0.0, 1.0);
+    red = std::clamp(red_, literals::COLORF_MIN, literals::COLORF_MAX);
   }
 
   constexpr void SetG(const double green_) {
-    green = std::clamp(green_, 0.0, 1.0);
+    green = std::clamp(green_, literals::COLORF_MIN, literals::COLORF_MAX);
   }
 
   constexpr void SetB(const double blue_) {
-    blue = std::clamp(blue_, 0.0, 1.0);
+    blue = std::clamp(blue_, literals::COLORF_MIN, literals::COLORF_MAX);
   }
 
-  [[nodiscard]] constexpr ColorRGB255 ToColorRGB255() const{
-    return ColorRGB255(red * 255, green * 255, blue * 255);
-  }
+  /*[[nodiscard]] constexpr ColorRGB255 ToColorRGB255() const{
+    return ColorRGB255(red * literals::COLOR_MAX, green * literals::COLOR_MAX, blue * literals::COLOR_MAX);
+  }*/
 
 private:
   double red, green, blue;
