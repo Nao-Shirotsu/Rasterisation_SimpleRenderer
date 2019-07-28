@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Image.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -26,6 +27,7 @@
     <None Include=".clang-format" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.hpp" />
     <ClInclude Include="src\ColorRGB.hpp" />
     <ClInclude Include="src\Image.hpp" />
     <ClInclude Include="src\Matrix.hpp" />

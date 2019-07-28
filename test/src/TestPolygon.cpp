@@ -1,11 +1,15 @@
 #include "../../src/Polygon.hpp"
 #include <gtest/gtest.h>
 
+namespace {
+
 void ASSERT_VECTOR3_EQ(const ras::Vector3& expected, const ras::Vector3& actual) {
   ASSERT_DOUBLE_EQ(expected.x, actual.x);
   ASSERT_DOUBLE_EQ(expected.y, actual.y);
   ASSERT_DOUBLE_EQ(expected.y, actual.y);
 }
+
+}// anonymous namespace
 
 TEST(Polygon, Constructor) {
   constexpr ras::Vector3 vertices[3] = { { -1, 1, 1 }, { 1, 1, 1 }, { 0, -1, 1 } };
