@@ -21,6 +21,9 @@ public:
   // 注視点(ワールド位置)変更
   void LookAt(const Vector3& lookAtPos_);
 
+  // 上方向を再設定
+  void SetUpward(const Vector3& upward_);
+
   // getter
   [[nodiscard]] constexpr Vector3 Pos() const {
     return pos;
