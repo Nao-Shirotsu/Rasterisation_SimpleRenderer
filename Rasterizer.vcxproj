@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Image.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -26,9 +27,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ColorRGB.hpp" />
+    <ClInclude Include="src\Image.hpp" />
     <ClInclude Include="src\Matrix.hpp" />
     <ClInclude Include="src\Polygon.hpp" />
     <ClInclude Include="src\Vector3.hpp" />
+    <ClInclude Include="src\WritableImage.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

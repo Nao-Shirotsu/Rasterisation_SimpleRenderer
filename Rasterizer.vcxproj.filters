@@ -9,6 +9,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Image.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
@@ -24,6 +27,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ColorRGB.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Image.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WritableImage.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
