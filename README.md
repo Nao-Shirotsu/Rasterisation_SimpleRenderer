@@ -2,6 +2,7 @@
 Rasterisation-based image generator      
 
 
+
 ## Build
 
 cmake and make generate directories including static library and execution files.
@@ -27,6 +28,14 @@ $ cd build
 $ cmake ..
 $ make
 ```
+
+   Then, an exec. file appears in the `bin` directory.   
+
+
+## Notes
+
+- Left-hand coordinate system
+- Vectors are expressed as Row-Vector
 
    
 
