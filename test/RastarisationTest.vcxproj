@@ -44,6 +44,7 @@
   <ItemGroup>
     <ClCompile Include="..\test\src\TestMatrix.cpp" />
     <ClCompile Include="..\test\src\TestVector3.cpp" />
+    <ClCompile Include="src\TestCamera.cpp" />
     <ClCompile Include="src\TestColorRGB.cpp" />
     <ClCompile Include="src\TestPolygon.cpp" />
   </ItemGroup>

@@ -41,5 +41,8 @@
     <ClInclude Include="src\Camera.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Screen.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
