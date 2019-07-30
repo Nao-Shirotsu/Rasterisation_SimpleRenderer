@@ -11,6 +11,7 @@ add_executable(test_run
     ${CMAKE_CURRENT_SOURCE_DIR}/src/TestPolygon.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/TestColorRGB.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/TestCamera.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TestScreen.cpp
 )
 target_link_libraries(test_run
     PRIVATE

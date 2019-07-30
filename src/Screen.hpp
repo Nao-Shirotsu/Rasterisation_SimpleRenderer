@@ -8,6 +8,7 @@
 namespace ras {
 
 class Screen {
+public:
   constexpr Screen()
     : centerPos{ 0, 0, 0 }
     , normal{ 0, 0, 1 } {}
@@ -16,13 +17,14 @@ class Screen {
     : centerPos{ centerPos_ }
     , normal{ normal_.NormalizedVector() } {}
 
-  [[nodiscard]] constexpr Matrix4 ParallelProjectionMatrix (){
-    return Matrix4{
+  void ApplyParallelProjection (Vector3& vertex) const{
+    const auto trans = Matrix4{
       1.0 - normal.x * normal.x, -normal.x * normal.y, -normal.x * normal.z, 0,
       -normal.x * normal.y, 1.0 - normal.y * normal.y, -normal.y * normal.z, 0,
       -normal.x * normal.z, -normal.y * normal.z, 1.0 - normal.z * normal.z, 0,
       0, 0, 0, 1
     };
+    vertex = vertex * trans;
   }
 
 private:

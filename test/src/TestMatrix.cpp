@@ -1,13 +1,17 @@
 #include "../../src/Matrix.hpp"
 #include <gtest/gtest.h>
 
-void ASSERT_EQ_MATRIX (const ras::Matrix4& expected, const ras::Matrix4& actual){
+namespace {
+
+void ASSERT_EQ_MATRIX(const ras::Matrix4& expected, const ras::Matrix4& actual) {
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
       ASSERT_DOUBLE_EQ(expected[i][j], actual[i][j]);
     }
   }
 }
+
+} // anonymous namespace
 
 TEST(Matrix4, Product) {
   constexpr ras::Matrix4 mat1 = {
@@ -37,13 +41,13 @@ TEST(Matrix4, Product) {
 TEST(Matrix4, ProductWithVector3) {
   constexpr auto vec = ras::Vector3( -1.5, 2.75, 0 );
   constexpr auto trans = ras::Matrix4{
-    -2, -3, -4, -2.5,
+    -2, -3, -4, 0,
     0, 0, 0, 0,
-    0.5, 0.5, 0.25, 0.75,
-    0, 0, 0, 0
+    0.5, 0.5, 0.25, 0.,
+    -2.5, 0, 0.75, 0
   };
 
-  constexpr auto expected = ras::Vector3{ 3, 4.5, 6};
+  constexpr auto expected = ras::Vector3{ -7.75, 1.375, 0};
   constexpr ras::Vector3 actual = vec * trans;
 
   ASSERT_DOUBLE_EQ(expected.x, actual.x);

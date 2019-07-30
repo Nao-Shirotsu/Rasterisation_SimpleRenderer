@@ -47,6 +47,7 @@
     <ClCompile Include="src\TestCamera.cpp" />
     <ClCompile Include="src\TestColorRGB.cpp" />
     <ClCompile Include="src\TestPolygon.cpp" />
+    <ClCompile Include="src\TestScreen.cpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
