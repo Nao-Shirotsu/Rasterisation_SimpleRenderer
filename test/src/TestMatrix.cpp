@@ -43,14 +43,14 @@ TEST(Matrix4, ProductWithVector3) {
   constexpr auto trans = ras::Matrix4{
     -2, -3, -4, 0,
     0, 0, 0, 0,
-    0.5, 0.5, 0.25, 0.,
+    0.5, 0.5, 0.25, 0,
     -2.5, 0, 0.75, 0
   };
 
-  constexpr auto expected = ras::Vector3{ -7.75, 1.375, 0};
+  constexpr auto expected = ras::Vector3{ 0.5, 4.5, 6.75};
   constexpr ras::Vector3 actual = vec * trans;
 
-  ASSERT_DOUBLE_EQ(expected.x, actual.x);
-  ASSERT_DOUBLE_EQ(expected.y, actual.y);
+  EXPECT_DOUBLE_EQ(expected.x, actual.x);
+  EXPECT_DOUBLE_EQ(expected.y, actual.y);
   ASSERT_DOUBLE_EQ(expected.z, actual.z);
 }
