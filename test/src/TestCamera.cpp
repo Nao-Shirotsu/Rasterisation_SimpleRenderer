@@ -1,5 +1,6 @@
 #include "../../src/Camera.hpp"
 #include <gtest/gtest.h>
+#include <cmath>
 
 namespace{
 
@@ -31,42 +32,44 @@ TEST(Camera, DefaultConstructor) {
 }
 
 TEST(Camera, ConversionConstructor1) {
-  auto camera = ras::Camera({ 1, 1, 1 }, { -1, 1, 1 }, {0, 0, 0});
+  const auto camera = ras::Camera({ 1, 1, 1 }, { -1, 1, -1 }, {0, 0, 0});
 
-  auto actualPos = camera.Pos();
+  const auto actualPos = camera.Pos();
   EXPECT_DOUBLE_EQ(1, actualPos.x);
   EXPECT_DOUBLE_EQ(1, actualPos.y);
   ASSERT_DOUBLE_EQ(1, actualPos.z);
 
-  auto expectedForward = ras::Vector3{ -1, -1, -1 }.NormalizedVector();
-  auto actualForward = camera.Forward();
+  const auto root3 = std::sqrt(3.0);
+  const auto expectedForward = ras::Vector3{ -1 / root3, -1 / root3, -1 / root3 }.NormalizedVector();
+  const auto actualForward = camera.Forward();
   EXPECT_DOUBLE_EQ(expectedForward.x, actualForward.x);
   EXPECT_DOUBLE_EQ(expectedForward.y, actualForward.y);
   ASSERT_DOUBLE_EQ(expectedForward.z, actualForward.z);
 
-  auto expectedUpward = ras::Vector3{ -1, 1, 1 }.NormalizedVector();
-  auto actualUpward = camera.Upward();
+  const auto expectedUpward = ras::Vector3{ -1 / root3, 1 / root3, -1 / root3 }.NormalizedVector();
+  const auto actualUpward = camera.Upward();
   EXPECT_DOUBLE_EQ(expectedUpward.x, actualUpward.x);
   EXPECT_DOUBLE_EQ(expectedUpward.y, actualUpward.y);
   ASSERT_DOUBLE_EQ(expectedUpward.z, actualUpward.z);
 }
 
 TEST(Camera, ConversionConstructor2) {
-  auto camera = ras::Camera({ -1, 0, 1 }, { -1, -1, -1 }, { 0, -1, 0 });
+  const auto camera = ras::Camera({ -1, 0, 1 }, { -1, -1, -1 }, { 0, -1, 0 });
 
-  auto actualPos = camera.Pos();
+  const auto actualPos = camera.Pos();
   EXPECT_DOUBLE_EQ(-1, actualPos.x);
   EXPECT_DOUBLE_EQ(0, actualPos.y);
   ASSERT_DOUBLE_EQ(1, actualPos.z);
 
-  auto expectedForward = ras::Vector3{ 1, -1, -1 }.NormalizedVector();
-  auto actualForward = camera.Forward();
+  const auto root3 = std::sqrt(3.0);
+  const auto expectedForward = ras::Vector3{ 1 / root3, -1 / root3, -1 / root3 }.NormalizedVector();
+  const auto actualForward = camera.Forward();
   EXPECT_DOUBLE_EQ(expectedForward.x, actualForward.x);
   EXPECT_DOUBLE_EQ(expectedForward.y, actualForward.y);
   ASSERT_DOUBLE_EQ(expectedForward.z, actualForward.z);
 
-  auto expectedUpward = ras::Vector3{ -1, -1, -1 }.NormalizedVector();
-  auto actualUpward = camera.Upward();
+  const auto expectedUpward = ras::Vector3{ -1 / root3, -1 / root3, -1 / root3 }.NormalizedVector();
+  const auto actualUpward = camera.Upward();
   EXPECT_DOUBLE_EQ(expectedUpward.x, actualUpward.x);
   EXPECT_DOUBLE_EQ(expectedUpward.y, actualUpward.y);
   ASSERT_DOUBLE_EQ(expectedUpward.z, actualUpward.z);

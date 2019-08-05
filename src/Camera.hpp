@@ -13,7 +13,7 @@ public:
     , upward{ 0, 1, 0 }
     , lookAtPos{0, 0, 0} {}
 
-  Camera(const Vector3& pos_, const Vector3& upward_, const Vector3& lookAt_);
+  Camera(const Vector3& pos_, const Vector3& upward_, const Vector3& lookAtPos_);
 
   // ƒ[ƒ‹ƒhˆÊ’uˆÚ“®
   void Translate(const Vector3& amount);
