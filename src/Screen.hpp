@@ -13,11 +13,12 @@ public:
     : centerPos{ 0, 0, 0 }
     , normal{ 0, 0, 1 } {}
 
-  constexpr Screen(const Vector3& centerPos_, const Vector3& normal_)
+  Screen(const Vector3& centerPos_, const Vector3& normal_)
     : centerPos{ centerPos_ }
     , normal{ normal_.NormalizedVector() } {}
 
   void ApplyParallelProjection (Vector3& vertex) const{
+    vertex = vertex - centerPos;
     const auto trans = Matrix4{
       1.0 - normal.x * normal.x, -normal.x * normal.y, -normal.x * normal.z, 0,
       -normal.x * normal.y, 1.0 - normal.y * normal.y, -normal.y * normal.z, 0,
