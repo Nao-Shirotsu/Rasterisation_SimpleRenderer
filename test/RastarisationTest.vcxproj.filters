@@ -24,8 +24,5 @@
     <ClCompile Include="src\TestCamera.cpp">
       <Filter>test/src</Filter>
     </ClCompile>
-    <ClCompile Include="src\TestScreen.cpp">
-      <Filter>test/src</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
